@@ -1,0 +1,49 @@
+<div class="row my-4">
+    <div class="col-md-12 text-right position-relative">
+        <button (click) = "showForm = !showForm" class="btn btn-dark btn-sm position-absolute top-0 end-0">
+            <i class="fa fa-plus"></i>New Employee
+        </button>
+    </div>
+</div> 
+
+<div class="row" *ngIf="showForm">
+    <div class="col-md-12">
+        <h3 class="text-center">New Employee</h3>
+    </div>
+    <div class="col-md-6 mx-auto">
+
+        <mat-form-field class="example-full-width">
+            <mat-label>Nom</mat-label>
+            <input [(ngModel)] = "myEmployee.Nom" matInput placeholder="Ex. HAFIDI">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <mat-label>Prenom</mat-label>
+            <input [(ngModel)] = "myEmployee.Prenom" matInput placeholder="Ex. Adil">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <mat-label>Entreprise</mat-label>
+            <input [(ngModel)] = "myEmployee.Entreprise" matInput placeholder="Ex. Amason">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Date de Naissance</mat-label>
+            <input matInput [(ngModel)] = "myEmployee.DatedeNaissance" [matDatepicker]="picker">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      
+        <div class="example-button-row">
+            <button *ngIf="!editForm" (click) ="addEmployee()" class="btn btn-success btn-block">
+                <i class="fa-solid fa-paper-plane"></i> New Employee
+            </button>
+            <button style ="margin-left: 10px;" mat-raised-button *ngIf="!editForm" (click) ="showForm=false" color="warn">
+                <i class="fa-solid fa-xmark"></i>
+                Fermer
+            </button>
+        </div>
+
+    </div>
+</div>
